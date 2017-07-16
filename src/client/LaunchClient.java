@@ -26,8 +26,9 @@ public class LaunchClient
 			catch(Exception e) 
 			{
 				JOptionPane.showMessageDialog(null, "data is corrupted, please delete your config file");
-				System.exit(-1);
 				e.printStackTrace();
+				System.exit(-1);
+				
 			}
 			
 		}
