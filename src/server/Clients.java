@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Clients 
 {
-	private List<Socket> sockets = new ArrayList<Socket>();
+	private ArrayList<Socket> sockets = new ArrayList<Socket>();
 	private String message;
 	
 	public void addClient(Socket client) 
@@ -18,9 +18,9 @@ public class Clients
 	
 	}
 	
-	public List<Socket> getClients()
+	public ArrayList<Socket> getClients()
 	{
-		List<Socket> ListClone = new ArrayList<Socket>();
+		ArrayList<Socket> ListClone = new ArrayList<Socket>();
 		ListClone.addAll(sockets);
 		return ListClone;
 		
@@ -37,18 +37,13 @@ public class Clients
 		{
 			try 
 			{
-			if(sockets.get(i).isClosed()) 
-			{
-				sockets.remove(i);
-				System.out.println("socket removed");
-			}
+			
 				
-			else 
-			{
+		
 				PrintWriter writer = new PrintWriter(sockets.get(i).getOutputStream());
 				writer.println(message);
 				writer.flush();
-			}
+			
 			
 			}
 			catch(IOException e) 
@@ -56,6 +51,11 @@ public class Clients
 				e.printStackTrace();
 			}
 		}
+	}
+	public void removeClient(Socket Obj) 
+	{
+		sockets.remove(Obj);
+		System.out.println("socket removed");
 	}
 	
 }

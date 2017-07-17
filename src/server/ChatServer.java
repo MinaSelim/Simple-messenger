@@ -60,7 +60,6 @@ public class ChatServer
 		private void read() 
 		{
 			String message;
-			System.out.println("this is socket");
 			try 
 			{
 			BufferedReader read = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -68,19 +67,16 @@ public class ChatServer
 			while(true)
 			{
 			
-				System.out.println("reading");
 				if((message = read.readLine()) != null) 
 				{
 					clients.setMessage(message);
 					clients.sendMessageToAll();
 				}
-				if(socket.isClosed()) 
-					break;
 			}
 			}
 			catch(Exception e) 
 			{
-				e.printStackTrace();
+				clients.removeClient(socket);
 			}
 		}
 	}

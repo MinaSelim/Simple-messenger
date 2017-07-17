@@ -3,7 +3,10 @@ package client;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -42,6 +45,62 @@ public class ChatClientGUI extends JFrame
 			e.printStackTrace();
 			System.exit(-1);
 		}
+		super.addWindowListener( new WindowListener() 
+		{
+
+			@Override
+			public void windowActivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				try 
+				{
+					socket.close();
+				}
+				catch(IOException e) 
+				{
+					e.printStackTrace();
+				}
+				
+			}
+
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				
+				
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowIconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		}
+				
+				
+				);
 		send_message = new JTextField("Please enter your message here       ");
 		chat = new JTextArea();
 		chat.setLineWrap(true);
